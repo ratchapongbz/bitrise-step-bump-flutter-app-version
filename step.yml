@@ -67,6 +67,27 @@ toolkit:
 
 
 inputs:
+  - pubspec_path: 
+    opts:
+      title: "Path of pubspec.yaml"
+      summary: The pubspec.yaml path that has to be updated
+      description: |
+        Determine the pubspec.yaml path that you want to update i.e $BITRISE_SOURCE_DIR/pubspec.yaml
+      is_expand: true
+      is_required: true
+  - bumping_type: build-number
+    opts:
+      title: "Bumping Type"
+      summary: A way for increasing each version number in a Flutter app version according to semantic versioning
+      description: |
+        Determine which bumping type best fits your needs for updating the version of your Flutter app
+      is_required: true
+      value_options: [
+        build-number,
+        patch-version,
+        minor-version,
+        major-version,
+      ]
   - example_step_input: Default Value - you can leave this empty if you want to
     opts:
       title: "Example Step Input"
@@ -80,6 +101,11 @@ inputs:
       value_options: []
 
 outputs:
+  - PUBSPEC_APP_VERSION:
+    opts:
+      title: "Updated Flutter app version"
+      description: |
+        Updated Flutter app version in the pubspec.yaml
   - EXAMPLE_STEP_OUTPUT:
     opts:
       title: "Example Step Output"
